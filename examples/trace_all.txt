@@ -1,0 +1,143 @@
+排期日期：2026-11-04 | 决策器：mock | 步数上限：10
+
+=== 素材 M01 ===
+审核状态：approved
+建议时段：19:00
+待确认项：期望时段 18:00 不可用，建议改为 19:00
+草稿状态：drafted
+草稿 ID：D-0001 @ 19:00
+工具调用次数：4
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M01"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M01", "title": "产品发布海报", "category": "marketing", "owner": "张三", "duration_min": 5, "risk_flags": [], "publish_requirement": {"preferred_time": "18:00", "hard_constraint": false, "flexible": true}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=query_slots({"date": "2026-11-04", "start": null, "end": null})
+        决策依据：查询目标时段及邻近时段占用
+        来源：mock
+        观察：风险=[]，通过=True
+  [step 4] action=save_draft({"asset_id": "M01", "slot": "19:00", "pending_confirmations": ["期望时段 18:00 不可用，建议改为 19:00"]})
+        决策依据：保存排期草稿
+        来源：mock
+        观察：时段=[('09:00', 'free'), ('10:00', 'free'), ('11:00', 'free'), ('12:00', 'free'), ('13:00', 'free'), ('14:00', 'free'), ('15:00', 'free'), ('16:00', 'free'), ('17:00', 'free'), ('18:00', 'occupied'), ('19:00', 'free'), ('20:00', 'free')]
+  [step 5] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：草稿 D-0001，重复=False
+
+=== 素材 M02 ===
+审核状态：approved
+建议时段：10:00
+草稿状态：drafted
+草稿 ID：D-0002 @ 10:00
+工具调用次数：4
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M02"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M02", "title": "剪辑入门教程", "category": "education", "owner": "李四", "duration_min": 20, "risk_flags": [], "publish_requirement": {"preferred_time": "10:00", "hard_constraint": false, "flexible": true}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=query_slots({"date": "2026-11-04", "start": null, "end": null})
+        决策依据：查询目标时段及邻近时段占用
+        来源：mock
+        观察：风险=[]，通过=True
+  [step 4] action=save_draft({"asset_id": "M02", "slot": "10:00", "pending_confirmations": []})
+        决策依据：保存排期草稿
+        来源：mock
+        观察：时段=[('09:00', 'free'), ('10:00', 'free'), ('11:00', 'free'), ('12:00', 'free'), ('13:00', 'free'), ('14:00', 'free'), ('15:00', 'free'), ('16:00', 'free'), ('17:00', 'free'), ('18:00', 'occupied'), ('19:00', 'free'), ('20:00', 'free')]
+  [step 5] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：草稿 D-0002，重复=False
+
+=== 素材 M03 ===
+审核状态：need_more_info
+缺失字段：owner
+草稿状态：none
+工具调用次数：1
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M03"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：素材已读取，缺失字段=['owner']
+
+=== 素材 M04 ===
+审核状态：blocked
+风险原因：分类涉及违禁内容；素材含违禁词
+草稿状态：none
+工具调用次数：2
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M04"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M04", "title": "海外赛事集锦", "category": "gambling", "owner": "赵六", "duration_min": 30, "risk_flags": ["banned_word"], "publish_requirement": {"preferred_time": "15:00", "hard_constraint": false, "flexible": true}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：风险=['分类涉及违禁内容', '素材含违禁词']，通过=False
+
+=== 素材 M05 ===
+审核状态：blocked
+待确认项：硬性要求时段 18:00 不可用（occupied），需用户确认，未擅自变更
+草稿状态：none
+工具调用次数：3
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M05"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M05", "title": "大促直播预告", "category": "marketing", "owner": "孙七", "duration_min": 3, "risk_flags": [], "publish_requirement": {"preferred_time": "18:00", "hard_constraint": true, "hard_deadline": "19:00", "flexible": false}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=query_slots({"date": "2026-11-04", "start": null, "end": null})
+        决策依据：查询目标时段及邻近时段占用
+        来源：mock
+        观察：风险=[]，通过=True
+  [step 4] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：时段=[('09:00', 'free'), ('10:00', 'free'), ('11:00', 'free'), ('12:00', 'free'), ('13:00', 'free'), ('14:00', 'free'), ('15:00', 'free'), ('16:00', 'free'), ('17:00', 'free'), ('18:00', 'occupied'), ('19:00', 'free'), ('20:00', 'free')]
+
+=== 素材 M07 ===
+审核状态：approved
+建议时段：20:00
+草稿状态：save_failed
+保存错误：时段 20:00 存储异常（faulty slot），草稿保存失败
+工具调用次数：4
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M07"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M07", "title": "故障时段测试素材", "category": "education", "owner": "周八", "duration_min": 10, "risk_flags": [], "publish_requirement": {"preferred_time": "20:00", "hard_constraint": false, "flexible": true}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=query_slots({"date": "2026-11-04", "start": null, "end": null})
+        决策依据：查询目标时段及邻近时段占用
+        来源：mock
+        观察：风险=[]，通过=True
+  [step 4] action=save_draft({"asset_id": "M07", "slot": "20:00", "pending_confirmations": []})
+        决策依据：保存排期草稿
+        来源：mock
+        观察：时段=[('09:00', 'free'), ('10:00', 'free'), ('11:00', 'free'), ('12:00', 'free'), ('13:00', 'free'), ('14:00', 'free'), ('15:00', 'free'), ('16:00', 'free'), ('17:00', 'free'), ('18:00', 'occupied'), ('19:00', 'free'), ('20:00', 'free')]
+  [step 5] action=finish({})
+        决策依据：处理完成
+        来源：mock
+        观察：失败：时段 20:00 存储异常（faulty slot），草稿保存失败

@@ -1,0 +1,5 @@
+# 运行时零第三方依赖（核心代码仅用 Python 标准库）
+# 真实 LLM 接入通过标准库 urllib 直连 OpenAI 兼容 /chat/completions 端点
+
+# 测试依赖
+pytest>=8.0

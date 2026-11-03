@@ -1,0 +1,80 @@
+[
+  {
+    "asset_id": "M01",
+    "title": "产品发布海报",
+    "category": "marketing",
+    "owner": "张三",
+    "duration_min": 5,
+    "risk_flags": [],
+    "publish_requirement": {
+      "preferred_time": "18:00",
+      "hard_constraint": false,
+      "flexible": true
+    }
+  },
+  {
+    "asset_id": "M02",
+    "title": "剪辑入门教程",
+    "category": "education",
+    "owner": "李四",
+    "duration_min": 20,
+    "risk_flags": [],
+    "publish_requirement": {
+      "preferred_time": "10:00",
+      "hard_constraint": false,
+      "flexible": true
+    }
+  },
+  {
+    "asset_id": "M03",
+    "title": "合作推广短视频",
+    "category": "marketing",
+    "duration_min": 15,
+    "risk_flags": [],
+    "publish_requirement": {
+      "preferred_time": "14:00",
+      "hard_constraint": false,
+      "flexible": true
+    }
+  },
+  {
+    "asset_id": "M04",
+    "title": "海外赛事集锦",
+    "category": "gambling",
+    "owner": "赵六",
+    "duration_min": 30,
+    "risk_flags": ["banned_word"],
+    "publish_requirement": {
+      "preferred_time": "15:00",
+      "hard_constraint": false,
+      "flexible": true
+    }
+  },
+  {
+    "asset_id": "M05",
+    "title": "大促直播预告",
+    "category": "marketing",
+    "owner": "孙七",
+    "duration_min": 3,
+    "risk_flags": [],
+    "publish_requirement": {
+      "preferred_time": "18:00",
+      "hard_constraint": true,
+      "hard_deadline": "19:00",
+      "flexible": false
+    }
+  },
+  {
+    "asset_id": "M07",
+    "title": "故障时段测试素材",
+    "category": "education",
+    "owner": "周八",
+    "duration_min": 10,
+    "risk_flags": [],
+    "publish_requirement": {
+      "preferred_time": "20:00",
+      "hard_constraint": false,
+      "flexible": true
+    }
+  }
+]

@@ -1,0 +1,28 @@
+
+[待确认] 素材 M01 建议时段 19:00
+   - 期望时段 18:00 不可用，建议改为 19:00
+是否确认？[y/n] 排期日期：2026-11-04 | 决策器：mock | 步数上限：10
+
+=== 素材 M01 ===
+审核状态：pending_confirmation
+建议时段：19:00
+待确认项：期望时段 18:00 不可用，建议改为 19:00；用户未确认，暂不保存
+草稿状态：none
+工具调用次数：3
+
+  --- ReAct Trace ---
+  [step 1] action=read_asset({"asset_id": "M01"})
+        决策依据：读取素材信息
+        来源：mock
+  [step 2] action=check_rules({"asset": {"asset_id": "M01", "title": "产品发布海报", "category": "marketing", "owner": "张三", "duration_min": 5, "risk_flags": [], "publish_requirement": {"preferred_time": "18:00", "hard_constraint": false, "flexible": true}}})
+        决策依据：检查审核规则风险
+        来源：mock
+        观察：素材已读取，缺失字段=[]
+  [step 3] action=query_slots({"date": "2026-11-04", "start": null, "end": null})
+        决策依据：查询目标时段及邻近时段占用
+        来源：mock
+        观察：风险=[]，通过=True
+  [step 4] action=finish({})
+        决策依据：用户未确认，跳过保存
+        来源：interactive
+        观察：时段=[('09:00', 'free'), ('10:00', 'free'), ('11:00', 'free'), ('12:00', 'free'), ('13:00', 'free'), ('14:00', 'free'), ('15:00', 'free'), ('16:00', 'free'), ('17:00', 'free'), ('18:00', 'occupied'), ('19:00', 'free'), ('20:00', 'free')]

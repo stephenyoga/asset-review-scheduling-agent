@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-04",
+  "slots": [
+    {"time": "09:00", "status": "free"},
+    {"time": "10:00", "status": "free"},
+    {"time": "11:00", "status": "free"},
+    {"time": "12:00", "status": "free"},
+    {"time": "13:00", "status": "free"},
+    {"time": "14:00", "status": "free"},
+    {"time": "15:00", "status": "free"},
+    {"time": "16:00", "status": "free"},
+    {"time": "17:00", "status": "free"},
+    {"time": "18:00", "status": "occupied", "asset_id": "M09"},
+    {"time": "19:00", "status": "free"},
+    {"time": "20:00", "status": "free", "faulty": true}
+  ]
+}

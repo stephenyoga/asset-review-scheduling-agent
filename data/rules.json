@@ -1,0 +1,26 @@
+[
+  {
+    "rule_id": "R5",
+    "type": "risk",
+    "field": "category",
+    "condition": {"in": ["gambling", "sensitive"]},
+    "level": "high",
+    "reason": "分类涉及违禁内容"
+  },
+  {
+    "rule_id": "R6",
+    "type": "risk",
+    "field": "risk_flags",
+    "condition": {"contains": "banned_word"},
+    "level": "high",
+    "reason": "素材含违禁词"
+  },
+  {
+    "rule_id": "R7",
+    "type": "risk",
+    "field": "duration_min",
+    "condition": {"gt": 60},
+    "level": "high",
+    "reason": "素材时长超过 60 分钟上限"
+  }
+]
